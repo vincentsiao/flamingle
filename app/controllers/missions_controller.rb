@@ -1,4 +1,6 @@
 class MissionsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:index, :show]
+  
   # GET /missions
   # GET /missions.xml
   def index

@@ -1,7 +1,11 @@
 Flamingle::Application.routes.draw do
+
   resources :missions
   
   root :to => "home#index"
+
+  devise_for :users, 
+    :path_names => { :sign_up => "register", :sign_in => "login" }
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
