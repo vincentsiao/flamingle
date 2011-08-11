@@ -1,9 +1,9 @@
 class CreateMissions < ActiveRecord::Migration
   def self.up
     create_table :missions do |t|
-      t.string :name
+      t.string :title
       t.string :description
-      t.string :type
+      t.string :priority
 
       t.timestamps
     end

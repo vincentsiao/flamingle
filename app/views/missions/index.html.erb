@@ -2,9 +2,9 @@
 
 <table>
   <tr>
-    <th>Name</th>
+    <th>Title</th>
     <th>Description</th>
-    <th>Type</th>
+    <th>Priority</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +12,9 @@
 
 <% @missions.each do |mission| %>
   <tr>
-    <td><%= mission.name %></td>
+    <td><%= mission.title %></td>
     <td><%= mission.description %></td>
-    <td><%= mission.type %></td>
+    <td><%= mission.priority %></td>
     <td><%= link_to 'Show', mission %></td>
     <td><%= link_to 'Edit', edit_mission_path(mission) %></td>
     <td><%= link_to 'Destroy', mission, :confirm => 'Are you sure?', :method => :delete %></td>
