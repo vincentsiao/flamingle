@@ -1,0 +1,10 @@
+body{
+	background-image: url('/images/bg.jpg');
+}
+#topbar{
+	background-image: url('/images/topbar_r.png');
+	background-repeat: repeat-x;
+	height: 89px;
+	width: 100%;
+	
+}

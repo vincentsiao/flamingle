@@ -10,6 +10,7 @@
 <% flash.each do |name, msg| %>
   <%= content_tag(:span, msg, :id => "flash_#{name}") %>
 <% end %>
+<div id='topbar'></div>
 <div id="auth">
   <% if user_signed_in? %>
     Signed in as <%= current_user.email %>
@@ -20,7 +21,7 @@
     <%= link_to "Sign in", new_user_session_path %>
   <% end %>
 </div>
+lolwut
 <%= yield %>
-
 </body>
 </html>
