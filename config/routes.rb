@@ -1,5 +1,7 @@
 Flamingle::Application.routes.draw do
 
+  get "dashboard/show"
+
   resources :missions
   
   root :to => "home#index"
