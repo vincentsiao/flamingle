@@ -1,7 +1,7 @@
 Flamingle::Application.routes.draw do
 
-  get "dashboard/show"
-
+  match "dashboard" => "dashboard#show"
+  
   resources :missions
   
   root :to => "home#index"

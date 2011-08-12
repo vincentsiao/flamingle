@@ -7,21 +7,52 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-<% flash.each do |name, msg| %>
-  <%= content_tag(:span, msg, :id => "flash_#{name}") %>
-<% end %>
-<div id='topbar'></div>
-<div id="auth">
-  <% if user_signed_in? %>
-    Signed in as <%= current_user.email %>
-    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Sign up", new_user_registration_path %> 
-    or 
-    <%= link_to "Sign in", new_user_session_path %>
-  <% end %>
+
+<div id='header'>
+	<div id='container'>
+		<div id='logo'></div>
+		<div id='menu'>
+			<ul>
+				<li><a id='dashboard' href="/dashboard"></a></li>
+				<li><a id='missions' href="/missions"></a></li>
+				<li id='menu_end'></li>
+			</ul>
+		</div>
+	</div>
 </div>
-lolwut
-<%= yield %>
+
+<% flash.each do |name, msg| %>
+<div class='message'>
+  <%= content_tag(:span, msg, :id => "flash_#{name}") %>
+</div>
+<% end %>
+
+<div id='content_top'></div>
+<div id='content'>
+	<div id='container'>
+		<div id='leftbar'>
+		
+			<div id="auth">
+			  <% if user_signed_in? %>
+			    Signed in as <%= current_user.email %>
+			    <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+			  <% else %>
+			    <%= link_to "Sign up", new_user_registration_path %> 
+			    or 
+			    <%= link_to "Sign in", new_user_session_path %>
+			  <% end %>
+			</div>
+			
+		</div>
+		<div id='rightbar'>
+		
+			<%= yield %>
+			
+		</div>
+	</div>
+</div>
+<div id='content_bottom'></div>
+
+
 </body>
 </html>
