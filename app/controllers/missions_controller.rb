@@ -83,4 +83,8 @@ class MissionsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def accept
+    redirect_to dashboard_url
+  end
 end

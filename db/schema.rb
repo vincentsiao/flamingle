@@ -10,13 +10,21 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110812083009) do
+ActiveRecord::Schema.define(:version => 20110812224151) do
 
   create_table "missions", :force => true do |t|
     t.string   "title"
     t.string   "description"
-    t.string   "priority"
+    t.integer  "priority_id"
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "priorities", :force => true do |t|
+    t.string   "name"
+    t.integer  "cost"
+    t.integer  "value"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

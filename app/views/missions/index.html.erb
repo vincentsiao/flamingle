@@ -11,14 +11,10 @@
 
 <% @missions.each do |mission| %>
   <tr>
-    <td><% if mission.user %>
-          <%= mission.user.username %>
-        <% else %>
-          n/a
-        <% end %></td>
+    <td><%= mission.user.try(:username) %></td>
     <td><%= mission.title %></td>
     <td><%= mission.description %></td>
-    <td><%= mission.priority %></td>
+    <td><%= mission.priority.try(:name) %></td>
     <td>
       <ul class="options">
         <li><%= link_to 'Show', mission %></li>
@@ -26,7 +22,7 @@
           <li><%= link_to 'Edit', edit_mission_path(mission) %></li>
         <% end %>
         <% if can?(:destroy, mission) %>
-          <li><%= link_to 'Destroy', mission, :confirm => 'Are you sure?', :method => :delete %></li>
+          <li><%= link_to 'Delete', mission, :confirm => 'Are you sure?', :method => :delete %></li>
         <% end %>
       </ul>
     </td>

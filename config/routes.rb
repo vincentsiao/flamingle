@@ -2,7 +2,9 @@ Flamingle::Application.routes.draw do
 
   match "dashboard" => "dashboard#show"
   
-  resources :missions
+  resources :missions do
+    get 'accept', :on => :member
+  end
   
   root :to => "home#index"
 

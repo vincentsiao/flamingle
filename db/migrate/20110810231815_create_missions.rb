@@ -3,7 +3,7 @@ class CreateMissions < ActiveRecord::Migration
     create_table :missions do |t|
       t.string :title
       t.string :description
-      t.string :priority
+      t.integer :priority_id
       t.integer :user_id
 
       t.timestamps

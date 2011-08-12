@@ -12,9 +12,14 @@
 
 <p>
   <b>Priority:</b>
-  <%= @mission.priority %>
+  <%= @mission.priority.try(:name) %>
 </p>
 
 
-<%= link_to 'Edit', edit_mission_path(@mission) %> |
+<%= link_to_if (can? :accept, @mission), 'Accept', accept_mission_path(@mission) %> |
+<% if can? :manage, @mission %>
+  <%= link_to 'Edit', edit_mission_path(@mission) %> |
+  <%= link_to 'Delete', mission_path(@mission), 
+              :confirm => 'Are you sure?', :method => :delete %> |
+<% end %>
 <%= link_to 'Back', missions_path %>

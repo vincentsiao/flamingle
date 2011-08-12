@@ -9,12 +9,10 @@ class Ability
     elsif user.role? :moderator
       can :manage, Mission
     else
-      can :create, Mission
-      can :manage, Mission do |mission|
-        # try if mission is nil
-        mission.try(:user) == user
-      end
-      can :read, :all
+      can [:read, :create, :accept], Mission
+      can [:update, :destroy], Mission, :user_id => user.id
     end
+    
+    cannot :accept, Mission, :user_id => user.id
   end
 end
