@@ -1,10 +1,11 @@
 class MissionsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
-  
+  load_and_authorize_resource
+
   # GET /missions
   # GET /missions.xml
   def index
-    @missions = Mission.all
+    @missions = Mission.all(:include => :user)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,7 +16,7 @@ class MissionsController < ApplicationController
   # GET /missions/1
   # GET /missions/1.xml
   def show
-    @mission = Mission.find(params[:id])
+    # @mission = Mission.find(params[:id], :include => :user)
 
     respond_to do |format|
       format.html # show.html.erb
@@ -26,7 +27,7 @@ class MissionsController < ApplicationController
   # GET /missions/new
   # GET /missions/new.xml
   def new
-    @mission = Mission.new
+    # @mission = Mission.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,13 +37,13 @@ class MissionsController < ApplicationController
 
   # GET /missions/1/edit
   def edit
-    @mission = Mission.find(params[:id])
+    # @mission = Mission.find(params[:id])
   end
 
   # POST /missions
   # POST /missions.xml
   def create
-    @mission = Mission.new(params[:mission])
+    @mission = current_user.missions.create(params[:mission])
 
     respond_to do |format|
       if @mission.save
@@ -58,7 +59,7 @@ class MissionsController < ApplicationController
   # PUT /missions/1
   # PUT /missions/1.xml
   def update
-    @mission = Mission.find(params[:id])
+    # @mission = Mission.find(params[:id])
 
     respond_to do |format|
       if @mission.update_attributes(params[:mission])
@@ -74,7 +75,7 @@ class MissionsController < ApplicationController
   # DELETE /missions/1
   # DELETE /missions/1.xml
   def destroy
-    @mission = Mission.find(params[:id])
+    # @mission = Mission.find(params[:id])
     @mission.destroy
 
     respond_to do |format|

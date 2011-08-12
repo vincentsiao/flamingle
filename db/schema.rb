@@ -10,12 +10,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110811004443) do
+ActiveRecord::Schema.define(:version => 20110812083009) do
 
   create_table "missions", :force => true do |t|
     t.string   "title"
     t.string   "description"
     t.string   "priority"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -36,6 +43,8 @@ ActiveRecord::Schema.define(:version => 20110811004443) do
     t.datetime "confirmation_sent_at"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "username"
+    t.integer  "role_id"
   end
 
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true

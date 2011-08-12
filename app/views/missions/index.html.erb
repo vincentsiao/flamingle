@@ -2,22 +2,34 @@
 
 <table>
   <tr>
+    <th>Creator</th>
     <th>Title</th>
     <th>Description</th>
     <th>Priority</th>
-    <th></th>
-    <th></th>
-    <th></th>
+    <th>Options</th>
   </tr>
 
 <% @missions.each do |mission| %>
   <tr>
+    <td><% if mission.user %>
+          <%= mission.user.username %>
+        <% else %>
+          n/a
+        <% end %></td>
     <td><%= mission.title %></td>
     <td><%= mission.description %></td>
     <td><%= mission.priority %></td>
-    <td><%= link_to 'Show', mission %></td>
-    <td><%= link_to 'Edit', edit_mission_path(mission) %></td>
-    <td><%= link_to 'Destroy', mission, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <ul class="options">
+        <li><%= link_to 'Show', mission %></li>
+        <% if can?(:update, mission) %>
+          <li><%= link_to 'Edit', edit_mission_path(mission) %></li>
+        <% end %>
+        <% if can?(:destroy, mission) %>
+          <li><%= link_to 'Destroy', mission, :confirm => 'Are you sure?', :method => :delete %></li>
+        <% end %>
+      </ul>
+    </td>
   </tr>
 <% end %>
 </table>
