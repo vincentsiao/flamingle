@@ -4,9 +4,9 @@ class Ability
   def initialize(user)
     user ||= User.new # Guest user
 
-    if user.try(:role).try(:name) == 'administrator'
+    if user.role? :administrator
       can :manage, :all
-    elsif user.try(:role).try(:name) == 'moderator'
+    elsif user.role? :moderator
       can :manage, Mission
     else
       can :create, Mission

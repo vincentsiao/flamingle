@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
   has_many :missions, :dependent => :destroy
   belongs_to :role
 
-  #def role?(role)
-  #  self.role.name == role.to_s
-  #end
+  def role?(role)
+    return self.role.try(:name) == role.to_s
+  end
   
 
   protected
