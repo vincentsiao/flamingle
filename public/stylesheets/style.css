@@ -29,7 +29,7 @@ body{
 
 p{
 	font-family: 'Open Sans', sans-serif;
-	margin: 0 0 20px 0;
+	margin: 10px 0 20px 0;
 }
 
 em {
@@ -55,6 +55,9 @@ h2{
 
 .owner{
 	background-color: #333333;
+}
+.past{
+	background-color: #999999;
 }
 #header{
 	background-image: url('/images/topbar_r.png');
@@ -135,6 +138,9 @@ h2{
 #footer{
 	text-align: center;
 }
+.missionslist li { 
+	position:relative
+}
 .missionslist li a{
 	background-color: #D8D4D1;
 	background-image: url('/images/mission_bar_r.jpg');
@@ -146,6 +152,7 @@ h2{
 	height: 40px;
 	margin: 3px 0 0 0;
 	padding: 6px 3px 2px 11px;
+	position: relative;
 	text-decoration: none;
 }
 .missionslist li a:hover{
@@ -163,13 +170,18 @@ h2{
 	line-height: normal;
 	font-size: 0.8em;
 }
-.missionslist li .done{
+.missionslist li a.done{
 	background:none;
 	background-image:url('/images/done_btn.png');
+	top: 6px;
 	border: 0;
+	clear: none;
 	display: inline;
-	float: right;
 	height: 35px;
+	margin: 0;
+	right: 10px;
+	padding: 0;
+	position: absolute;
 	width: 57px;
 	
 }
@@ -187,4 +199,10 @@ h2{
 	position: relative;
 	text-align: center;
 	z-index: -100;
+}
+.available{
+	color: #5bde32;
+}
+.heavy{
+	font-weight: 700;
 }

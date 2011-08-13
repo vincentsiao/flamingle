@@ -11,4 +11,8 @@ class Mission < ActiveRecord::Base
   	  self.description
   	end
   end
+  
+  def human_time
+    self.created_at.strftime("%b %d, %Y at %I:%M%p")
+  end
 end
