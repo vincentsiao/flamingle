@@ -17,14 +17,20 @@ victor = User.create!(:email => 'victor@mit.edu',
                       :role_id => user_role.id)
               victor.confirm!
 
-Priority.create(:name => 'Low',
-                :cost => 0, :value => 100)
+MissionPriority.create(:name => 'Regular',
+                :cost => 0, :value => 25)
+MissionPriority.create(:name => 'High',
+                :cost => 75, :value => 100)
 
-Priority.create(:name => 'High',
-                :cost => 200, :value => 400)
+MissionStatus.create([{:name => 'Available'},
+                      {:name => 'In Progress'},
+                      {:name => 'Pending Approval'},
+                      {:name => 'Completed'},
+                      {:name => 'Disabled'}])
 
-Mission.create(:user_id => 1, :priority_id => 1,
-               :title => "Buy Me That Textbook")
-
-Mission.create(:user_id => 2, :priority_id => 2,
-               :title => "Obtain Three Elf Tears")
+Mission.create([{:user_id => 1, :title => "Buy Me That Textbook",
+                 :description => "I really need Matter & Interactions I for my Physics course. I really do.",
+                 :mission_priority_id => 1, :mission_status_id => 1},
+                {:user_id => 2, :title => "Obtain Three Elf Tears",
+                 :description => "Summoning the Weasel King requires 6 Elf Tears. I only have 3 - please aid me.",
+                 :mission_priority_id => 2, :mission_status_id => 1}])

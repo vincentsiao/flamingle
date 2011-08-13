@@ -1,6 +1,6 @@
-class CreatePriorities < ActiveRecord::Migration
+class CreateMissionPriorities < ActiveRecord::Migration
   def self.up
-    create_table :priorities do |t|
+    create_table :mission_priorities do |t|
       t.string :name
       t.integer :cost
       t.integer :value
@@ -10,6 +10,6 @@ class CreatePriorities < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :priorities
+    drop_table :mission_priorities
   end
 end
