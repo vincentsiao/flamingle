@@ -218,3 +218,15 @@ h2{
 }
 .mission_high{
 }
+
+#create_mission a{
+	background: none;
+	background-image: url('/images/sidebar_new_mission_btn.png');
+	display: block;
+	height: 35px;
+	margin: 0 0 10px 5px;
+	width: 150px;
+}
+#create_mission a:hover{
+	background-position: 150px 0;
+}
