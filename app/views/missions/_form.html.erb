@@ -21,7 +21,7 @@
   </div>
   <div class="field">
     <%= f.label :priority %><br />
-    <%= collection_select :mission, :priority_id, Priority.all, :id, :name %>
+    <%= collection_select :mission, :mission_priority_id, MissionPriority.all, :id, :name %>
   </div>
   <div class="actions">
     <%= f.submit %>
