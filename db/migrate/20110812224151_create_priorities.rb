@@ -5,7 +5,7 @@ class CreatePriorities < ActiveRecord::Migration
       t.integer :cost
       t.integer :value
 
-      t.timestamps
+#      t.timestamps
     end
   end
 

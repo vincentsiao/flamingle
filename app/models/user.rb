@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
                   :password_confirmation, :remember_me, :role_id
 
   has_many :missions, :dependent => :destroy
+  has_many :mission_attempts, :dependent => :destroy
+  has_many :attempted_missions, :through => :mission_attempts, :source => :mission
   belongs_to :role
 
   def role?(role)

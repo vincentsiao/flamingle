@@ -1,3 +1,12 @@
 <h1>Dashboard</h1>
 <p>Hello, <em>Vincent</em>. How's the weather up there?</p>
 <h2>Missions You're Attempting</h2>
+<ul>
+<% @attempted_missions.each do |mission| %>
+  <li>
+    <%= mission.title %>
+    <%= mission.description %>
+    <% # mission.user.try(:username), mission.priority %>
+  </li>
+<% end %>
+</ul>
