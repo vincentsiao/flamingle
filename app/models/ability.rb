@@ -15,7 +15,7 @@ class Ability
     
     #cannot :accept, Mission, :user_id => user.id
     cannot :accept, Mission do |mission|
-      mission.attempting_users.exists? user || mission.user == user
+      (mission.attempting_users.exists? user) || (mission.user == user)
     end
   end
 end
