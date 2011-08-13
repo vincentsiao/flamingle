@@ -8,4 +8,4 @@ en:
         login: "Username or email"
   unauthorized:
     accept:
-      mission: "You can't accept your own missions! Why do your own work when someone else can do it for you?"
+      mission: "You can't accept this mission. Did you accept this mission already? Are you trying to  accept your own mission?"
