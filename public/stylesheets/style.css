@@ -57,7 +57,7 @@ h2{
 	width: 100%;
 }
 #container{
-	width: 650px;
+	width: 900px;
 	margin: 0 auto;
 }
 #logo{
@@ -100,18 +100,18 @@ h2{
 	margin: 0 auto;
 	min-height: 300px;
 	overflow: auto;
-	width: 670px;
+	width: 920px;
 }
 #content_top{
 	background-image: url('/images/content_top.png');
-	width: 670px;
+	width: 920px;
 	height: 28px;
 	margin: 0 auto;
 
 }
 #content_bottom{
 	background-image: url('/images/content_bottom.png');
-	width: 670px;
+	width: 920px;
 	height: 28px;
 	margin: 0 auto;
 
@@ -125,13 +125,16 @@ h2{
 	float: left;
 	margin: 0 0 0 30px;
 }
+#footer{
+	text-align: center;
+}
 .message{
 	
 	top: -24px;
 	background-color: #f6f4a7;
 	border-color: #818059;
 	border-style: solid;
-	border-width: 0 0 1px 0;
+	border-width: 1px 0 1px 0;
 	padding: 3px;
 	position: relative;
 	text-align: center;
