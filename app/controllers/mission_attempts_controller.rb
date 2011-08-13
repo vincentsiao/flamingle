@@ -34,7 +34,7 @@ class MissionAttemptsController < ApplicationController
       flash[:error] = "We can't complete your mission attempt at the moment. Please try again later."
       
     end
-    ddredirect_to dashboard_url 
+    redirect_to dashboard_url 
     return
   end
 

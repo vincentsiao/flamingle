@@ -1,12 +1,41 @@
 <h1>Dashboard</h1>
 <p>Hello, <em>Vincent</em>. How's the weather up there?</p>
 <h2>Missions You're Attempting</h2>
+<div class='missionslist'>
 <ul>
 <% @attempted_missions.each do |mission| %>
   <li>
-    <%= mission.title %>
-    <%= mission.description %>
+  	<a href='missions/<%= mission.id %>'>
+  		<%= link_to 'DONEFUCKER', complete_mission_url, :confirm => 'REALLY?', :class=>'button'%>
+  		
+    <span class='title'><%= mission.title %></span>
+    <span class='description'><%= mission.short_description %></span>
     <% # mission.user.try(:username), mission.priority %>
+  	</a>
   </li>
 <% end %>
 </ul>
+</div>
+
+<h2 class='owner'>Missions You've Created</h2>
+<div class='missionslist'>
+<ul>
+<% @created_missions.each do |mission| %>
+	<li>
+		<a href='missions/<%= mission.id %>'>
+    	<span class='title'><%= mission.title %></span>
+    	<span class='description'><%= mission.short_description %></span>
+    
+        <!-- 
+        <% if can?(:update, mission) %>
+        	<%= link_to 'Edit', edit_mission_path(mission) %>
+        <% end %>
+        <% if can?(:destroy, mission) %>
+        	<%= link_to 'Delete', mission, :confirm => 'Are you sure?', :method => :delete %>
+        <% end %>
+        -->
+       </a> 
+  </li>
+<% end %>
+</ul>
+</div>

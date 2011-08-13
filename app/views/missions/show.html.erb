@@ -1,18 +1,11 @@
-<p id="notice"><%= notice %></p>
-
+<h1>MISSION: <em><%= @mission.title %></em></h1>
 <p>
-  <b>Title:</b>
-  <%= @mission.title %>
+<%= @mission.description %>
 </p>
-
+<h2>Extra Details</h2>
 <p>
-  <b>Description:</b>
-  <%= @mission.description %>
-</p>
-
-<p>
-  <b>Priority:</b>
-  <%= @mission.priority.try(:name) %>
+Posted by: <%= @mission.user.try(:username) %><br />
+Priority: <%= @mission.priority.try(:name) %>
 </p>
 
 
@@ -23,3 +16,5 @@
               :confirm => 'Are you sure?', :method => :delete %> |
 <% end %>
 <%= link_to 'Back', missions_path %>
+
+<p id="notice"><%= notice %></p>

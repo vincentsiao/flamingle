@@ -9,13 +9,13 @@ vincent = User.create!(:email => 'vsiao@andrew.cmu.edu',
                        :username => 'konnetikut',
                        :password => 'j2h3nkj',
                        :role_id => admin_role.id)
-              .confirm!
+             vincent.confirm!
 
 victor = User.create!(:email => 'victor@mit.edu',
                       :username => 'poofytoo',
                       :password => 'pencilpencil',
                       :role_id => user_role.id)
-              .confirm!
+              victor.confirm!
 
 Priority.create(:name => 'Low',
                 :cost => 0, :value => 100)

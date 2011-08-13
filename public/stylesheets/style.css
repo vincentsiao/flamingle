@@ -24,9 +24,11 @@
 
 body{
 	background-image: url('/images/bg.jpg');
+	font-family: 'Open Sans', sans-serif;
 }
 
 p{
+	font-family: 'Open Sans', sans-serif;
 	margin: 0 0 20px 0;
 }
 
@@ -45,11 +47,15 @@ h2{
 	color: #FFFFFF;
 	font-family: 'Oswald', sans-serif;
 	font-size: 1.2em;
+	margin: 20px 0 0 0;
 	padding: 2px 3px 4px 3px;
 	text-transform: uppercase;
-	width: 410px;
+	width: 634px;
 }
 
+.owner{
+	background-color: #333333;
+}
 #header{
 	background-image: url('/images/topbar_r.png');
 	background-repeat: repeat-x;
@@ -119,23 +125,63 @@ h2{
 #leftbar{
 	float: left;
 	margin: 0 0 0 20px;
-	width:160px;
+	width: 160px;
 }
 #rightbar{
 	float: left;
 	margin: 0 0 0 30px;
+	width: 640px;
 }
 #footer{
 	text-align: center;
 }
+.missionslist li a{
+	background-color: #D8D4D1;
+	background-image: url('/images/mission_bar_r.jpg');
+	background-repeat: no-repeat;
+	color: #111111;
+	cursor: pointer;
+	display: block;
+	font-family: 'Open Sans', sans-serif;
+	height: 40px;
+	margin: 3px 0 0 0;
+	padding: 6px 3px 2px 11px;
+	text-decoration: none;
+}
+.missionslist li a:hover{
+	background-color: #E2DCD7;
+	color: #000000;
+}
+.missionslist li .title{
+	display: block;
+	line-height: normal;
+
+}
+.missionslist li .description{
+	color: #797775;
+	display: block;
+	line-height: normal;
+	font-size: 0.8em;
+}
+.missionslist li .done{
+	background:none;
+	background-image:url('/images/done_btn.png');
+	border: 0;
+	float: right;
+	height: 35px;
+	width: 57px;
+}
+.missionslist li .done:hover{
+	background-position-x: -57px;
+	cursor: pointer;
+}
 .message{
-	
 	top: -24px;
 	background-color: #f6f4a7;
 	border-color: #818059;
 	border-style: solid;
 	border-width: 1px 0 1px 0;
-	padding: 3px;
+	padding: 5px;
 	position: relative;
 	text-align: center;
 	z-index: -100;

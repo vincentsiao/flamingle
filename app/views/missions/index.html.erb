@@ -1,35 +1,25 @@
-<h1>Listing missions</h1>
-
-<table>
-  <tr>
-    <th>Creator</th>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Priority</th>
-    <th>Options</th>
-  </tr>
-
+<h1>Missions Control Panel</h1>
+<h2>Listing All Missions</h2>
+<div class='missionslist'>
+<ul>
 <% @missions.each do |mission| %>
-  <tr>
-    <td><%= mission.user.try(:username) %></td>
-    <td><%= mission.title %></td>
-    <td><%= mission.description %></td>
-    <td><%= mission.priority.try(:name) %></td>
-    <td>
-      <ul class="options">
-        <li><%= link_to 'Show', mission %></li>
+	<li>
+		<a href='missions/<%= mission.id %>'>
+    	<span class='title'><%= mission.title %></span>
+    	<span class='description'><%= mission.short_description %></span>
+    
+        <!-- 
         <% if can?(:update, mission) %>
-          <li><%= link_to 'Edit', edit_mission_path(mission) %></li>
+        	<%= link_to 'Edit', edit_mission_path(mission) %>
         <% end %>
         <% if can?(:destroy, mission) %>
-          <li><%= link_to 'Delete', mission, :confirm => 'Are you sure?', :method => :delete %></li>
+        	<%= link_to 'Delete', mission, :confirm => 'Are you sure?', :method => :delete %>
         <% end %>
-      </ul>
-    </td>
-  </tr>
+        -->
+       </a> 
+  </li>
 <% end %>
-</table>
-
-<br />
+</ul>
+</div>
 
 <%= link_to 'New Mission', new_mission_path %>
