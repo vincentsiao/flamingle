@@ -1,0 +1,2 @@
+module MissionAttemptsHelper
+end

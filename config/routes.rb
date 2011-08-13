@@ -1,11 +1,12 @@
 Flamingle::Application.routes.draw do
 
   match "dashboard" => "dashboard#show"
-  
-  resources :missions do
-    get 'accept', :on => :member
-  end
-  
+ 
+  resources :missions
+ 
+  match 'missions/:id/accept' => 'mission_attempts#create', :as => :accept_mission
+  match 'missions/:id/complete' => 'mission_attempts#update', :as => :complete_mission
+
   root :to => "home#index"
 
   devise_for :users, 

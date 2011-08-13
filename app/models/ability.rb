@@ -13,6 +13,9 @@ class Ability
       can [:update, :destroy], Mission, :user_id => user.id
     end
     
-    cannot :accept, Mission, :user_id => user.id
+    #cannot :accept, Mission, :user_id => user.id
+    cannot :accept, Mission do |mission|
+      mission.attempting_users.exists? user || mission.user == user
+    end
   end
 end
