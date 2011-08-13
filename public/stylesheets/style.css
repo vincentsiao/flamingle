@@ -206,3 +206,15 @@ h2{
 .heavy{
 	font-weight: 700;
 }
+.mission_badge{
+	background-image: url('/images/mission_bar_badges.jpg');
+	height: 35px;
+	float: right;
+	margin: 0 3px 0 0;
+	width: 35px;
+}
+.mission_owner{
+	background-position-x: -35px;
+}
+.mission_high{
+}

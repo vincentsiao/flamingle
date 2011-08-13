@@ -5,9 +5,14 @@
 <% @missions.each do |mission| %>
 	<li>
 		<a href='missions/<%= mission.id %>'>
+    	<% if mission.user == current_user %>
+    		<div class='mission_badge mission_owner'></div>
+    	<% end %>
+    	<% if mission.mission_priority.name == 'High' %>
+    		<div class='mission_badge mission_high'></div>
+    	<% end %>
     	<span class='title'><%= mission.title %></span>
     	<span class='description'><%= mission.short_description %></span>
-    
         <!-- 
         <% if can?(:update, mission) %>
         	<%= link_to 'Edit', edit_mission_path(mission) %>
