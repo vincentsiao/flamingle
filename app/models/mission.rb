@@ -5,6 +5,15 @@ class Mission < ActiveRecord::Base
   has_many :mission_attempts
   has_many :attempting_users, :through => :mission_attempts, :source => :user
 
+  def refresh_status
+    if self.mission_attempts.size > 0
+      self.mission_status = MissionStatus.find_by_name("In Progress")
+    else
+      self.mission_status = MissionStatus.find_by_name("Available")
+    end
+    self.save
+  end
+  
   def short_description
     if self.description
       if self.description.size > 100

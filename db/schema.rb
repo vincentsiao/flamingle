@@ -10,14 +10,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110813074842) do
+ActiveRecord::Schema.define(:version => 20110813082353) do
+
+  create_table "mission_attempt_statuses", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "mission_attempts", :force => true do |t|
     t.integer  "user_id"
     t.integer  "mission_id"
-    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "mission_attempt_status_id"
   end
 
   create_table "mission_priorities", :force => true do |t|

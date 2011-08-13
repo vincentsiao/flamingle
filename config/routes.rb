@@ -6,6 +6,7 @@ Flamingle::Application.routes.draw do
  
   match 'missions/:id/accept' => 'mission_attempts#create', :as => :accept_mission
   match 'missions/:id/complete' => 'mission_attempts#update', :as => :complete_mission
+  match 'missions/:id/abandon' => 'mission_attempts#destroy', :as => :abandon_mission
 
   root :to => "home#index"
 

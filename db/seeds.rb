@@ -28,6 +28,11 @@ MissionStatus.create([{:name => 'Available'},
                       {:name => 'Completed'},
                       {:name => 'Disabled'}])
 
+MissionAttemptStatus.create([{:name => 'In Progress'},
+                             {:name => 'Done'},
+                             {:name => 'Inactive'},
+                             {:name => 'Approved'}])
+
 Mission.create([{:user_id => 1, :title => "Buy Me That Textbook",
                  :description => "I really need Matter & Interactions I for my Physics course. I really do.",
                  :mission_priority_id => 1, :mission_status_id => 1},

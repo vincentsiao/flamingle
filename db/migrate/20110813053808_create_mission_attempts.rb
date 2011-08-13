@@ -3,7 +3,6 @@ class CreateMissionAttempts < ActiveRecord::Migration
     create_table :mission_attempts do |t|
       t.integer :user_id
       t.integer :mission_id
-      t.string :status
 
       t.timestamps
     end
