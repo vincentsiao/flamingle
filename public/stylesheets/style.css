@@ -167,9 +167,11 @@ h2{
 	background:none;
 	background-image:url('/images/done_btn.png');
 	border: 0;
+	display: inline;
 	float: right;
 	height: 35px;
 	width: 57px;
+	
 }
 .missionslist li .done:hover{
 	background-position-x: -57px;

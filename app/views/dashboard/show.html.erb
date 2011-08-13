@@ -6,7 +6,8 @@
 <% @attempted_missions.each do |mission| %>
   <li>
   	<a href='missions/<%= mission.id %>'>
-  		<%= link_to 'DONEFUCKER', complete_mission_url, :confirm => 'REALLY?', :class=>'button'%>
+ 
+  		<%= link_to '', complete_mission_url(mission), :confirm => 'REALLY?', :class=>'done' %>
   		
     <span class='title'><%= mission.title %></span>
     <span class='description'><%= mission.short_description %></span>
