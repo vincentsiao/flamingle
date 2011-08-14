@@ -47,7 +47,8 @@ class MissionsController < ApplicationController
 
     respond_to do |format|
       if @mission.save
-        format.html { redirect_to(@mission, :notice => 'Mission was successfully created.') }
+        flash[:notice] = "You created a mission! Well done."
+        format.html { redirect_to @mission }
         format.xml  { render :xml => @mission, :status => :created, :location => @mission }
       else
         format.html { render :action => "new" }
@@ -63,7 +64,8 @@ class MissionsController < ApplicationController
 
     respond_to do |format|
       if @mission.update_attributes(params[:mission])
-        format.html { redirect_to(@mission, :notice => 'Mission was successfully updated.') }
+        flash[:notice] = "Your mission details were updated successfully."
+        format.html { redirect_to @mission }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
