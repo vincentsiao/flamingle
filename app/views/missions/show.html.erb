@@ -2,7 +2,7 @@
 <p>
 <%= @mission.description %>
 </p>
-<h2 class='owner'>Status: <span class='<%= @mission.status %>'><%= @mission.status %></span></h2>
+<h2 class='owner'>Status: <span class='<%= @mission.status.downcase %>'><%= @mission.status %></span></h2>
 <p>
 Posted by: <span class='heavy'><%= @mission.user.try(:username) %></span><br />
 Posted on: <span class='heavy'><%= @mission.human_time %></span><br />
@@ -19,13 +19,14 @@ Posted on: <span class='heavy'><%= @mission.human_time %></span><br />
 <% end %>
 
 <h2>Mission Attempts</h2>
-<ul id="mission-attempts">
+<ul id="mission_attempts">
 <% @mission.mission_attempts.each do |attempt| %>
   <li>
-    <%= attempt.user.username %>
-    <%= attempt.status %>
+    <span class='user'><%= attempt.user.username %></span> is <%= attempt.status.downcase %>.
     <% if @mission.user == current_user %>
+    <div class='mission_approve'>
       <%= link_to "Approve", approve_mission_path(@mission, attempt.user.id) if attempt.status == "Done" %>
+    </div>
     <% end %>
   </li>
 <% end %>

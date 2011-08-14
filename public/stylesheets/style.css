@@ -134,7 +134,7 @@ h2{
 }
 #rightbar{
 	float: left;
-	margin: 0 0 0 30px;
+	margin: 0 0 0 45px;
 	width: 640px;
 }
 #footer{
@@ -191,6 +191,28 @@ h2{
 	background-position-x: -57px;
 	cursor: pointer;
 }
+
+#mission_attempts li{
+	background-color: #D8D4D1;
+	background-image: url('/images/mission_bar_r.jpg');
+	background-repeat: no-repeat;
+	color: #111111;
+	display: block;
+	font-family: 'Open Sans', sans-serif;
+	height: 25px;
+	margin: 3px 0 0 0;
+	padding: 6px 3px 2px 11px;
+	position: relative;
+	text-decoration: none;
+}
+.mission_approve{
+	float: right;
+	margin: 0 10px 0 0;
+}
+.user{
+	font-weight: 700;
+}
+
 .message{
 	top: -24px;
 	background-color: #f6f4a7;
@@ -204,6 +226,12 @@ h2{
 }
 .available{
 	color: #5bde32;
+}
+.pending{
+	color: #fffe00;
+}
+.completed{
+	color: #aaab9a;
 }
 .heavy{
 	font-weight: 700;
@@ -238,14 +266,31 @@ h2{
 #anon{
 	background-image: url('/images/sidebar_anon.png');
 	height: 191px;
-	margin: 0 auto;
+	margin: 0 0 0 6px;
 	width: 150px;
 }
-#loginregister a{
+#login a{
 	background: none;
 	background-image: url('/images/sidebar_lr.png');
-	display: block;
+	display: inline-block;
+	float: left;
 	height: 35px;
-	margin: 10px 0 10px 5px;
-	width: 150px;
+	margin: 10px 0 0 6px;
+	width: 62px;
+}
+#register a{
+	background: none;
+	background-image: url('/images/sidebar_lr.png');
+	background-position: -62px 0;
+	float: left;
+	display: inline-block;
+	height: 35px;
+	margin: 10px 0 0 0;
+	width: 88px;
+}
+#login a:hover{
+	background-position: -150px 0;
+}
+#register a:hover{
+	background-position: -212px 0;
 }
