@@ -16,6 +16,12 @@ victor = User.create!(:email => 'victor@mit.edu',
                       :password => 'pencilpencil',
                       :role_id => user_role.id)
               victor.confirm!
+              
+bob = User.create!(:email => 'bob@berkeley.edu',
+                      :username => 'bob',
+                      :password => 'pencil',
+                      :role_id => user_role.id)
+              bob.confirm!
 
 MissionPriority.create(:name => 'Regular',
                 :cost => 0, :value => 25)
@@ -38,4 +44,7 @@ Mission.create([{:user_id => 1, :title => "Buy Me That Textbook",
                  :mission_priority_id => 1, :mission_status_id => 1},
                 {:user_id => 2, :title => "Obtain Three Elf Tears",
                  :description => "Summoning the Weasel King requires 6 Elf Tears. I only have 3 - please aid me.",
-                 :mission_priority_id => 2, :mission_status_id => 1}])
+                 :mission_priority_id => 2, :mission_status_id => 1},
+                {:user_id => 3, :title => "Fetch Printouts from Tree-Eater",
+                 :description => "Go to the Tree-Eater printer and get everything printed under 'kario'",
+                 :mission_priority_id => 1, :mission_status_id => 1}])
