@@ -219,7 +219,10 @@ h2{
 	background-position-x: -35px;
 }
 .mission_high{
+	background-position-x: 0;
 }
+
+/* LEFT BAR CSS */
 
 #create_mission a{
 	background: none;
@@ -231,4 +234,18 @@ h2{
 }
 #create_mission a:hover{
 	background-position: 150px 0;
+}
+#anon{
+	background-image: url('/images/sidebar_anon.png');
+	height: 191px;
+	margin: 0 auto;
+	width: 150px;
+}
+#loginregister a{
+	background: none;
+	background-image: url('/images/sidebar_lr.png');
+	display: block;
+	height: 35px;
+	margin: 10px 0 10px 5px;
+	width: 150px;
 }

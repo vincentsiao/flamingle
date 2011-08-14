@@ -35,23 +35,32 @@
 	<div id='container'>
 		<div id='leftbar'>
 			
-			<div id='create_mission'><%= link_to '', new_mission_path %></div>
 			
-			<p>
-			<center><img src='/images/sidebar_minime.png'/></center><br />
-			Planet: <span class='heavy'>Heroku</span><br />
-			Nickels: <span class='heavy'>410</span>
-			</p>
 
-			
+
+		
 			<div id="auth">
 			  <% if user_signed_in? %>
+			    <div id='create_mission'><%= link_to '', new_mission_path %></div>
+			    
+				<p>
+				<center><img src='/images/sidebar_minime.png'/></center><br />
+				Planet: <span class='heavy'>Heroku</span><br />
+				Nickels: <span class='heavy'>410</span>
+				</p>
+				
 			    <%= current_user.username %>
 			    <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
+			    
 			  <% else %>
+			  
+			    <div id='anon'></div>
+			    <div id='loginregister'><a href=''></a></div>
+			    
 			    <%= link_to "Register", new_user_registration_path %> 
 			    or 
 			    <%= link_to "Login", new_user_session_path %>
+			    
 			  <% end %>
 			</div>
 			

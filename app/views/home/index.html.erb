@@ -14,5 +14,39 @@
 <h1>Flamingle BETA</h1>
 <a id='dashboard' href="/dashboard">Dashboard</a>
 <a id='missions' href="/missions">Missions</a>
+
+<h2>Sign in</h2>
+
+<%= form_for("user", :url => user_session_path) do |f| %> 
+   <%= f.label :login %> <br/> 
+   <%= f.text_field :username , :size=>'15',:maxlength=>'32' %> <br/> 
+   <%= f.label :password %> <br/> 
+   <%= f.password_field :password , :size=>'15', :maxlength=>'32' %> 
+<br/> 
+   <%= f.submit "Sign in" %> <br /> 
+   <%= link_to "Forgot your password?", new_password_path('user')  %> 
+ <% end %>
+ 
+<h2>Register</h2>
+
+<%= form_for("user", :url => user_registration_path,:method => :post) do |f| %> 
+     <p><%= f.label :email %><br />
+  <%= f.email_field :email %></p>
+
+  <p><%= f.label :username %><br />
+  <%= f.text_field :username %></p>
+
+  <p><%= f.label :password %><br />
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation %><br />
+  <%= f.password_field :password_confirmation %></p>
+
+  <p><%= f.submit "Sign up" %></p>
+ <% end %>
+
+
+
+
 </body>
 </html>
