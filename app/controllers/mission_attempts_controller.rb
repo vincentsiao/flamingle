@@ -9,7 +9,6 @@ class MissionAttemptsController < ApplicationController
     authorize! :accept, @mission
     
     @mission.mission_attempts.new(current_user)
-    @mission.refresh_status
     
     flash[:notice] = "You're now attempting '" + @mission.title + "'. Good Luck!"
     redirect_to dashboard_url
@@ -19,8 +18,7 @@ class MissionAttemptsController < ApplicationController
   def update
     @mission = Mission.find(params[:id])
     @attempt = @mission.mission_attempts.find_by_user_id(current_user.id)
-    @attempt.status = "Done"
-    @attempt.mission.status = "Pending Approval"
+    @attempt.set_status "Done"
     
     if @attempt.save 
       flash[:notice] = "Well done! You'll receive your reward when " + @attempt.mission.user.username + " approves your attempt."
@@ -36,7 +34,6 @@ class MissionAttemptsController < ApplicationController
     authorize! :abandon, @mission
    
     @mission.mission_attempts.abandon(current_user)
-    @mission.refresh_status
     
     flash[:notice] = "You've abandoned your mission attempt."
     redirect_to dashboard_url

@@ -44,7 +44,6 @@ class MissionsController < ApplicationController
   # POST /missions.xml
   def create
     @mission = current_user.missions.create(params[:mission])
-    @mission.status = "Available"
 
     respond_to do |format|
       if @mission.save
@@ -92,7 +91,7 @@ class MissionsController < ApplicationController
     authorize! :manage, @mission
     
     @mission.mission_attempts.approve(params[:user_id])
-    @mission.status = "Completed"
+    @mission.save
 
     flash[:notice] = "Your mission is complete! " + User.find(params[:user_id]).username + " will be rewarded for finishing the task."
     redirect_to dashboard_url

@@ -28,23 +28,12 @@ MissionPriority.create(:name => 'Regular',
 MissionPriority.create(:name => 'High',
                 :cost => 75, :value => 100)
 
-MissionStatus.create([{:name => 'Available'},
-                      {:name => 'In Progress'},
-                      {:name => 'Pending Approval'},
-                      {:name => 'Completed'},
-                      {:name => 'Disabled'}])
-
-MissionAttemptStatus.create([{:name => 'In Progress'},
-                             {:name => 'Done'},
-                             {:name => 'Inactive'},
-                             {:name => 'Approved'}])
-
 Mission.create([{:user_id => 1, :title => "Buy Me That Textbook",
                  :description => "I really need Matter & Interactions I for my Physics course. I really do.",
-                 :mission_priority_id => 1, :mission_status_id => 1},
+                 :mission_priority_id => 1},
                 {:user_id => 2, :title => "Obtain Three Elf Tears",
                  :description => "Summoning the Weasel King requires 6 Elf Tears. I only have 3 - please aid me.",
-                 :mission_priority_id => 2, :mission_status_id => 1},
+                 :mission_priority_id => 2},
                 {:user_id => 3, :title => "Fetch Printouts from Tree-Eater",
                  :description => "Go to the Tree-Eater printer and get everything printed under 'kario'",
-                 :mission_priority_id => 1, :mission_status_id => 1}])
+                 :mission_priority_id => 1}])

@@ -10,20 +10,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110813082353) do
-
-  create_table "mission_attempt_statuses", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
+ActiveRecord::Schema.define(:version => 20110814092702) do
 
   create_table "mission_attempts", :force => true do |t|
     t.integer  "user_id"
     t.integer  "mission_id"
+    t.string   "status"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "mission_attempt_status_id"
   end
 
   create_table "mission_priorities", :force => true do |t|
@@ -32,20 +26,22 @@ ActiveRecord::Schema.define(:version => 20110813082353) do
     t.integer "value"
   end
 
-  create_table "mission_statuses", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "missions", :force => true do |t|
     t.string   "title"
     t.string   "description"
     t.integer  "mission_priority_id"
     t.integer  "user_id"
+    t.boolean  "active"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "mission_status_id"
+  end
+
+  create_table "notifications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "summary"
+    t.string   "path"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "roles", :force => true do |t|
