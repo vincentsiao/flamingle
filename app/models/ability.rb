@@ -13,6 +13,10 @@ class Ability
       can :manage, Mission, :user_id => user.id
     end
     
+    cannot :abandon, Mission
+    can :abandon, Mission do |mission|
+      mission.attempting_users.exists? user
+    end
     cannot :accept, Mission do |mission|
       (mission.attempting_users.exists? user) || (mission.user == user)
     end

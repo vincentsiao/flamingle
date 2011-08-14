@@ -4,32 +4,22 @@ class MissionAttemptsController < ApplicationController
   def index
   end
 
-  def show
-  end
-
-  def new
-  end
-
-  def edit
-  end
-
   def create
     @mission = Mission.find(params[:id])
     authorize! :accept, @mission
     
+    @mission.mission_attempts.new(current_user)
     @mission.refresh_status
-    MissionAttempt.create(:user_id => current_user.id, 
-                          :mission_id => @mission.id, 
-                          :mission_attempt_status_id => MissionAttemptStatus.find_by_name("In Progress"))
-
+    
     flash[:notice] = "You're now attempting '" + @mission.title + "'. Good Luck!"
     redirect_to dashboard_url
     return
   end
 
   def update
-    @attempt = MissionAttempt.find_by_mission_id_and_user_id(params[:id], current_user.id)
-    @attempt.mission_attempt_status = MissionAttemptStatus.find_by_name("Done")
+    @mission = Mission.find(params[:id])
+    @attempt = @mission.mission_attempts.find_by_user_id(current_user.id)
+    @attempt.status = "Done"
     
     if @attempt.save 
       flash[:notice] = "Well done! You'll receive your reward when " + @attempt.mission.user.username + " approves your attempt."
@@ -42,11 +32,11 @@ class MissionAttemptsController < ApplicationController
 
   def destroy
     @mission = Mission.find(params[:id])
-
-    @attempt = @mission.mission_attempts.find_by_user_id(current_user.id)
-    @attempt.destroy
-
+    authorize! :abandon, @mission
+   
+    @mission.mission_attempts.abandon(current_user)
     @mission.refresh_status
+    
     flash[:notice] = "You've abandoned your mission attempt."
     redirect_to dashboard_url
     return

@@ -9,3 +9,5 @@ en:
   unauthorized:
     accept:
       mission: "You can't accept this mission. Did you accept this mission already? Or are you trying to accept your own mission?"
+    abandon:
+      mission: "You can't abandon a mission that you haven't started!"

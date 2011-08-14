@@ -2,18 +2,42 @@ class Mission < ActiveRecord::Base
   belongs_to :user
   belongs_to :mission_priority
   belongs_to :mission_status
-  has_many :mission_attempts
+ 
   has_many :attempting_users, :through => :mission_attempts, :source => :user
+  has_many :mission_attempts do
+    
+    def new(user)
+      create(:user_id => user.id)
+      find_by_user_id(user.id).status = "In Progress"
+    end
+
+    def abandon(user)
+      find_by_user_id(user.id).destroy
+    end
+    
+  end
+
+  def priority
+    self.mission_priority.try(:name)
+  end
+
+  def status
+    self.mission_status.try(:name)
+  end
+  def status=(name)
+    self.mission_status = MissionStatus.find_by_name(name)
+    self.save
+  end 
 
   def refresh_status
     if self.mission_attempts.size > 0
-      self.mission_status = MissionStatus.find_by_name("In Progress")
+      self.status = "In Progress"
     else
-      self.mission_status = MissionStatus.find_by_name("Available")
+      self.status = "Available"
     end
     self.save
   end
-  
+
   def short_description
     if self.description
       if self.description.size > 100
