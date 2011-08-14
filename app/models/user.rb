@@ -14,6 +14,8 @@ class User < ActiveRecord::Base
   has_many :missions, :dependent => :destroy
   has_many :mission_attempts, :dependent => :destroy
   has_many :attempted_missions, :through => :mission_attempts, :source => :mission
+  
+  has_many :notifications
   belongs_to :role
 
   def role?(role)
