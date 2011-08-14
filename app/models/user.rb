@@ -22,6 +22,15 @@ class User < ActiveRecord::Base
     return self.role.try(:name) == role.to_s
   end
   
+  def approval_rate
+    pending = self.missions.find_all_by_mission_status_id(MissionStatus.find_by_name("Pending Approval")) 
+    completed = self.missions.find_all_by_mission_status_id(MissionStatus.find_by_name("Completed")) 
+    if pending.size == 0
+      return 100 * !!completed.size
+    else
+      return 100 * completed.size / (completed.size + pending.size)
+    end
+  end
 
   protected
 

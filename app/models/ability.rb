@@ -18,7 +18,7 @@ class Ability
       mission.attempting_users.exists? user
     end
     cannot :accept, Mission do |mission|
-      (mission.attempting_users.exists? user) || (mission.user == user)
+      (mission.user == user) || (mission.status == "Completed") || (mission.status == "Disabled")
     end
   end
 end
