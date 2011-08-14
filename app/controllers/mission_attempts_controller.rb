@@ -20,6 +20,7 @@ class MissionAttemptsController < ApplicationController
     @mission = Mission.find(params[:id])
     @attempt = @mission.mission_attempts.find_by_user_id(current_user.id)
     @attempt.status = "Done"
+    @attempt.mission.status = "Pending Approval"
     
     if @attempt.save 
       flash[:notice] = "Well done! You'll receive your reward when " + @attempt.mission.user.username + " approves your attempt."

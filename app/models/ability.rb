@@ -12,7 +12,7 @@ class Ability
       can [:read, :create, :accept], Mission
       can :manage, Mission, :user_id => user.id
     end
-    
+   
     cannot :abandon, Mission
     can :abandon, Mission do |mission|
       mission.attempting_users.exists? user

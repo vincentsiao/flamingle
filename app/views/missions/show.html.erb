@@ -2,20 +2,21 @@
 <p>
 <%= @mission.description %>
 </p>
-<h2 class='owner'>Status: <span class='available'>Available</span></h2>
+<h2 class='owner'>Status: <span class='<%= @mission.status %>'><%= @mission.status %></span></h2>
 <p>
 Posted by: <span class='heavy'><%= @mission.user.try(:username) %></span><br />
 Posted on: <span class='heavy'><%= @mission.human_time %></span><br />
 </p>
 
-
-<%= link_to_if (can? :accept, @mission), 'Accept', accept_mission_path(@mission) %> |
-<% if can? :manage, @mission %>
-  <%= link_to 'Edit', edit_mission_path(@mission) %> |
-  <%= link_to 'Delete', mission_path(@mission), 
-              :confirm => 'Are you sure?', :method => :delete %> |
+<% if @mission.status != "Complete" %>
+  <%= link_to_if (can? :accept, @mission), 'Accept', accept_mission_path(@mission) %> |
+  <% if can? :manage, @mission %>
+    <%= link_to 'Edit', edit_mission_path(@mission) %> |
+    <%= link_to 'Delete', mission_path(@mission), 
+                :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
+  <%= link_to 'Back', missions_path %>
 <% end %>
-<%= link_to 'Back', missions_path %>
 
 <h2>Mission Attempts</h2>
 <ul id="mission-attempts">
@@ -23,6 +24,9 @@ Posted on: <span class='heavy'><%= @mission.human_time %></span><br />
   <li>
     <%= attempt.user.username %>
     <%= attempt.status %>
+    <% if @mission.user == current_user %>
+      <%= link_to "Approve", approve_mission_path(@mission, attempt.user.id) if attempt.status == "Done" %>
+    <% end %>
   </li>
 <% end %>
 </ul>

@@ -15,6 +15,11 @@ class Mission < ActiveRecord::Base
       find_by_user_id(user.id).destroy
     end
     
+    def approve(user_id)
+      update_all(:mission_attempt_status_id => MissionAttemptStatus.find_by_name("Inactive"))
+      find_by_user_id(user_id).status = "Approved"
+    end
+
   end
 
   def priority
@@ -31,7 +36,11 @@ class Mission < ActiveRecord::Base
 
   def refresh_status
     if self.mission_attempts.size > 0
-      self.status = "In Progress"
+      if self.mission_attempts.find_by_mission_attempt_status_id(MissionAttemptStatus.find_by_name("Done"))
+        self.status = "Pending Approval"
+      else
+        self.status = "In Progress"
+      end
     else
       self.status = "Available"
     end
