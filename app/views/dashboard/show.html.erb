@@ -6,13 +6,17 @@
 <% @attempted_missions.each do |mission| %>
   <li>
   	<a href='missions/<%= mission.id %>'>
- 
+  	
+	
     <span class='title'><%= mission.title %></span>
     <span class='description'><%= mission.short_description %></span>
     <% # mission.user.try(:username), mission.priority %>
  	
- 	<%= link_to '', complete_mission_url(mission), :confirm => 'Are you sure you have completed this mission to it\'s specifications?', :class=>'done' %>
-  
+ 	<% if mission.mission_attempts.find_by_user_id(current_user.id).status == 'Done' %>
+ 		<div class='done_waiting_approval'></div>
+	<% else %>
+ 		<%= link_to '', complete_mission_url(mission), :confirm => 'Are you sure you have completed this mission to it\'s specifications?', :class=>'done' %>
+  	<% end %>
   	</a>
   </li>
 <% end %>

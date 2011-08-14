@@ -191,7 +191,23 @@ h2{
 	background-position-x: -57px;
 	cursor: pointer;
 }
-
+.missionslist li .done_waiting_approval{
+	background:none;
+	background-image:url('/images/done_btn.png');
+	background-position: -114px 0;
+	top: 6px;
+	border: 0;
+	clear: none;
+	cursor: default;
+	display: inline;
+	height: 35px;
+	margin: 0;
+	right: 10px;
+	padding: 0;
+	position: absolute;
+	width: 57px;
+	
+}
 #mission_attempts li{
 	background-color: #D8D4D1;
 	background-image: url('/images/mission_bar_r.jpg');
@@ -226,6 +242,9 @@ h2{
 }
 .available{
 	color: #5bde32;
+}
+.in{
+	color: #00d8ff;
 }
 .pending{
 	color: #fffe00;
