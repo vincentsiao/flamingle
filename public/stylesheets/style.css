@@ -69,8 +69,10 @@ h2{
 	width: 900px;
 	margin: 0 auto;
 }
-#logo{
+#logo a{
+	background:none;
 	background-image: url('/images/topbar_logo.png');
+	display: block;
 	float: right;
 	height: 29px;
 	width: 127px;
